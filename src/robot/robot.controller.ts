@@ -10,6 +10,11 @@ export class RobotController {
     return this.robotService.getHello()
   }
 
+  @Post('pressKey')
+  pressKey(@Body() body: { key: string }) {
+    this.robotService.pressKey(body.key)
+    return { success: true }
+  }
   @Post('volume/up')
   volumeUp() {
     this.robotService.increaseVolume()
@@ -19,6 +24,11 @@ export class RobotController {
   @Post('volume/down')
   volumeDown() {
     this.robotService.decreaseVolume()
+    return { success: true }
+  }
+  @Post('volume/toggle')
+  volumeToggle() {
+    this.robotService.toggleVolume()
     return { success: true }
   }
   @Post('mouse/move')
